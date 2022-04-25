@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double F(double x)
+{
+    return log(x) - 5*cos(x);
+}
+
+int main()
+{
+    double X,y=0,x1, x2, res, Y, E = 0.1,e=0.001,it=0;
+    cout<<"Введите границы"<<endl<< "нижняя ";
+    cin>>X;
+    cout<<"Верхняя";
+    cin>>Y;
+    for(double i=X;i<Y;i=i+E) {
+
+it++;
+        if ((F(i) * F(i + E)) < 0) {
+            x1 = i;
+            x2 = i + E;
+
+                do{
+                y = res;
+                res = x2 - ((x2 - x1) / (F(x2) - F(x1))) * F(x1);
+                x1 = x2;
+                x2 = res;
+                   }
+            while (fabs(y - res) >= e);
+            cout << "Ответ:" << res <<" Количество итераций "<<it<< endl;
+        }
+    }
+
+
+
+cout<<"dssdvg";
+
+    return 0;
+}
